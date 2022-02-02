@@ -225,8 +225,8 @@ def create_files(session, hub_url, user):
 
 def main():
     token = os.environ.get("HUB_TOKEN", "123thisisnotarealtokenbeepboop321")
-    user = "lauritko"
-    hub_url = "https://sandbox.apps.stack.it.ntnu.no"
+    user = os.environ.get("HUB_USER")
+    hub_url = os.environ.get("HUB_URL")
 
     # session = make_session(get_token())
     session = make_session(token)

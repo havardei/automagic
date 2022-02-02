@@ -1,18 +1,22 @@
-apiVersion: batch/v1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: autograde
   namespace: sandbox
 spec:
-  schedule: "*/10 * * * *"
+  schedule: "0 09,15,21 * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: autograde
-              image: lauri3k/autograde:latest
+              image: quay.io/ntnu/autograde:latest
               env:
+                - name: HUB_USER
+                  value: "user"
+                - name: HUB_URL
+                  value: "inserturl"
                 - name: HUB_TOKEN
                   valueFrom:
                     secretKeyRef:
